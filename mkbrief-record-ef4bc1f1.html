@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mk体育 · 稳定入口与页面说明</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    }
+
+    body {
+      background: #f5f9fc;
+      color: #1f2f3c;
+      line-height: 1.6;
+      padding: 1.5rem;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    /* hero 区域 */
+    .hero {
+      text-align: center;
+      padding: 3rem 1rem 2.5rem;
+      background: linear-gradient(145deg, #d9eee9 0%, #c3e0da 100%);
+      border-radius: 2rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 6px 14px rgba(0, 80, 70, 0.08);
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #174c48;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero h1 span {
+      background: #e7f5f0;
+      padding: 0.1rem 0.6rem;
+      border-radius: 1.5rem;
+      font-weight: 400;
+      font-size: 1.6rem;
+      color: #1b6b63;
+    }
+
+    .hero p {
+      max-width: 660px;
+      margin: 0.8rem auto 0;
+      font-size: 1.05rem;
+      color: #2d4d48;
+    }
+
+    /* 卡片网格 */
+    .grid-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    @media (min-width: 600px) {
+      .grid-cards {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (min-width: 920px) {
+      .grid-cards {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+
+    .card {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 1.6rem 1.4rem;
+      box-shadow: 0 4px 10px rgba(0, 80, 70, 0.06);
+      border-left: 5px solid #3fa99a;
+      transition: transform 0.15s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 18px rgba(0, 90, 80, 0.10);
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #1f5e56;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .card h3::before {
+      content: "⊡";
+      font-size: 1.4rem;
+      color: #2c8f80;
+      line-height: 1;
+    }
+
+    .card p {
+      color: #2b4640;
+      font-size: 0.95rem;
+    }
+
+    .card .tag {
+      display: inline-block;
+      margin-top: 0.8rem;
+      font-size: 0.8rem;
+      background: #e2f0ec;
+      color: #1d6b60;
+      padding: 0.2rem 0.8rem;
+      border-radius: 20px;
+    }
+
+    /* 使用建议 + 提示混排区域 */
+    .insight-block {
+      background: #ffffffde;
+      backdrop-filter: blur(2px);
+      padding: 1.8rem 1.6rem;
+      border-radius: 1.8rem;
+      border: 1px solid #cde3dd;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 8px rgba(0, 70, 60, 0.04);
+    }
+
+    .insight-block h2 {
+      font-weight: 450;
+      font-size: 1.5rem;
+      color: #1b5b52;
+      border-bottom: 2px solid #bbe0d6;
+      padding-bottom: 0.4rem;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    .insight-block p {
+      margin-top: 0.75rem;
+      color: #1f3d38;
+    }
+
+    .insight-block .faq-item {
+      margin-top: 1.2rem;
+      padding-top: 0.8rem;
+      border-top: 1px dashed #b8d6ce;
+    }
+
+    .insight-block .faq-item strong {
+      color: #1f6a5f;
+      font-weight: 500;
+    }
+
+    .insight-block .faq-item p {
+      margin-top: 0.2rem;
+      font-size: 0.95rem;
+    }
+
+    /* 稳定入口说明 */
+    .entry-note {
+      background: #ebf6f2;
+      border-radius: 2rem;
+      padding: 1.8rem 2rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      border: 1px solid #b6dbd0;
+    }
+
+    .entry-note p {
+      font-size: 1.05rem;
+      color: #1f4b44;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .entry-note a {
+      color: #116f61;
+      background: #e2f3ed;
+      padding: 0.1rem 0.4rem;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+
+    .entry-note a:hover {
+      background: #c3e3d9;
+      text-decoration: underline;
+    }
+
+    /* 底部 */
+    .footer-note {
+      font-size: 0.85rem;
+      color: #5d7b74;
+      text-align: center;
+      border-top: 1px solid #caddd6;
+      padding-top: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .footer-note a {
+      color: #1c7768;
+      text-decoration: none;
+    }
+
+    .footer-note a:hover {
+      text-decoration: underline;
+    }
+
+    .dot-accent {
+      color: #258d7a;
+    }
+
+    /* 移动端打磨 */
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .card {
+        padding: 1.2rem;
+      }
+      .entry-note {
+        padding: 1.2rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- hero -->
+    <div class="hero">
+      <h1>mk体育 <span>· 稳定入口</span></h1>
+      <p>一个面向运动信息与内容聚合的页面，侧重快速定位与结构化的浏览体验。这里不堆叠冗余，只呈现经过整理的摘要与导航。</p>
+    </div>
+
+    <!-- 亮点卡片网格（产品说明式） -->
+    <div class="grid-cards">
+      <div class="card">
+        <h3>摘要聚合</h3>
+        <p>围绕 <a href="https://mkbrief.com.cn" style="color:#1b7b6b;text-decoration:underline;">mk体育</a> 的主题页面，将赛事预告、数据要点、短评浓缩为可快速翻阅的卡片，减少跳转负担。</p>
+        <span class="tag">精简信息流</span>
+      </div>
+      <div class="card">
+        <h3>场景适配</h3>
+        <p>日常刷看、赛前速览、赛后回顾——每个时段都有对应的内容层次。页面布局根据使用习惯微调，不必反复寻找入口。</p>
+        <span class="tag">多时段覆盖</span>
+      </div>
+      <div class="card">
+        <h3>浏览引导</h3>
+        <p>通过稳定的栏目划分与清晰的视觉分组，让信息获取更自然。没有过度动效，只有克制的蓝绿点缀与网格卡片。</p>
+        <span class="tag">克制设计</span>
+      </div>
+      <div class="card">
+        <h3>移动优先</h3>
+        <p>从手机屏幕出发，卡片间距、字体大小、触控区域都经过适配。即使快速滑动，也不易误触或疲劳。</p>
+        <span class="tag">响应式布局</span>
+      </div>
+      <div class="card">
+        <h3>内容节奏</h3>
+        <p>每个模块保持适度的信息密度，避免大段文字堆砌。要点与段落交错，阅读压力降低，更适合碎片时间。</p>
+        <span class="tag">呼吸感排版</span>
+      </div>
+      <div class="card">
+        <h3>可靠入口</h3>
+        <p>直接使用 <a href="https://mkbrief.com.cn" style="color:#1b7b6b;text-decoration:underline;">mk体育</a> 作为基址，页面始终保持可用。不需要额外跳转或层层嵌套，打开即用。</p>
+        <span class="tag">直达无干扰</span>
+      </div>
+    </div>
+
+    <!-- 使用建议 & FAQ 摘要（差异化段落） -->
+    <div class="insight-block">
+      <h2>使用建议 · 常见问题</h2>
+
+      <p>如果你是第一次接触这个页面，不妨先从卡片区域开始，了解大致的内容分类。日常使用时，可以把它当作一个固定的信息起点——不必每次重新寻找，打开 <a href="https://mkbrief.com.cn" style="color:#1a7a68;">mk体育</a> 就能看到最新的摘要与导航。</p>
+
+      <div class="faq-item">
+        <strong>这个页面适合哪些场景？</strong>
+        <p>适合需要快速了解体育动态、赛程概况或话题聚焦的用户。无论是通勤间隙的快速浏览，还是赛前做一点功课，都能找到对应的内容模块。页面没有强制推送，浏览节奏由你自己控制。</p>
+      </div>
+
+      <div class="faq-item">
+        <strong>内容更新频率如何？</strong>
+        <p>摘要与卡片会根据比赛周期与信息重要性做适度更新，保持内容的时效性与可读性。不会为了更新而填充无关信息，每一条都经过筛选。</p>
+      </div>
+
+      <div class="faq-item">
+        <strong>移动端和桌面体验一致吗？</strong>
+        <p>核心卡片与导航在两种设备上都经过优化。手机端使用网格单列布局，手指滑动舒适；桌面端则利用多列卡片展示更多内容，同时保留足够的留白。</p>
+      </div>
+
+      <div class="faq-item" style="border-top-color:#a8cec3;">
+        <strong>页面是否采集或追踪数据？</strong>
+        <p>页面仅做内容展示与导航，不包含第三方追踪脚本或隐性统计。你可以安心浏览，每一次访问都是私密的。</p>
+      </div>
+    </div>
+
+    <!-- 可信但克制的访问说明 -->
+    <div class="entry-note">
+      <p>
+        <span class="dot-accent">⦿</span> 本站以内容稳定与入口清晰为原则。无论你从哪个设备进入，<a href="https://mkbrief.com.cn">mk体育</a> 都会呈现一致的页面结构与最新摘要。
+        没有弹窗、没有强制跳转，只有简洁的卡片和克制的蓝绿配色。如果你需要固定一个体育信息起点，这里可以作为一个选择。
+      </p>
+    </div>
+
+    <!-- footer -->
+    <div class="footer-note">
+      <p>页面基于产品说明方式呈现 · 内容持续整理中 · <a href="https://mkbrief.com.cn">mk体育</a></p>
+      <p style="margin-top:0.3rem; color:#618f86;">蓝绿色调 · 网格卡片 · 移动端友好</p>
+    </div>
+  </div>
+</body>
+</html>
