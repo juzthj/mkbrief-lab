@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>老哥网 · 信息卡片与实用指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: #f4f6fa;
+            color: #1e2a3a;
+            line-height: 1.6;
+        }
+
+        /* 深色头图区域 */
+        .hero {
+            background: linear-gradient(145deg, #0b1a2e 0%, #1c3149 100%);
+            padding: 3.5rem 1.5rem 3rem;
+            text-align: center;
+            color: #e9edf2;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 650px;
+            margin: 0.8rem auto 0;
+            color: #cbd5e1;
+            opacity: 0.92;
+        }
+
+        .hero .badge {
+            display: inline-block;
+            background: #3b6ba5;
+            color: #fff;
+            font-size: 0.85rem;
+            padding: 0.25rem 1rem;
+            border-radius: 30px;
+            margin-top: 1rem;
+            letter-spacing: 0.3px;
+        }
+
+        /* 主容器 */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.2rem;
+        }
+
+        /* 卡片网格 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin: -2rem auto 2.5rem;
+            position: relative;
+            z-index: 2;
+            padding-bottom: 1rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0, 20, 40, 0.08);
+            padding: 1.8rem 1.5rem 2rem;
+            transition: box-shadow 0.2s, transform 0.15s;
+            border: 1px solid #eef2f7;
+        }
+
+        .card:hover {
+            box-shadow: 0 12px 32px rgba(0, 20, 50, 0.12);
+            transform: translateY(-3px);
+        }
+
+        .card .icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #0b1a2e;
+            margin-bottom: 0.6rem;
+            border-left: 4px solid #3b6ba5;
+            padding-left: 0.75rem;
+        }
+
+        .card p, .card ul {
+            color: #2c3e50;
+            font-size: 0.95rem;
+            margin-top: 0.4rem;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card ul li {
+            padding: 0.25rem 0 0.25rem 1.2rem;
+            position: relative;
+        }
+
+        .card ul li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #3b6ba5;
+            font-weight: bold;
+        }
+
+        /* 自然链接区域（段落式） */
+        .link-section {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2rem 2rem 2.2rem;
+            margin: 1rem 0 2.5rem;
+            border: 1px solid #e6ecf4;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.02);
+        }
+
+        .link-section h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #0b1a2e;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .link-section p {
+            margin-bottom: 1.1rem;
+            color: #1f2d3d;
+            font-size: 1rem;
+        }
+
+        .link-section a {
+            color: #1d5b9e;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted #9bb8e0;
+            transition: border-bottom 0.2s, color 0.1s;
+        }
+
+        .link-section a:hover {
+            color: #0a3b6b;
+            border-bottom: 1px solid #0a3b6b;
+        }
+
+        .faq-highlight {
+            background: #f8faff;
+            border-radius: 16px;
+            padding: 1.5rem 1.8rem;
+            margin: 2rem 0 2.2rem;
+            border-left: 4px solid #3b6ba5;
+        }
+
+        .faq-highlight p {
+            margin: 0.5rem 0;
+            font-size: 0.96rem;
+        }
+
+        .faq-highlight strong {
+            color: #0b2a4a;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            background: transparent;
+            border: 1px solid #3b6ba5;
+            color: #1d5b9e;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: 0.15s;
+            margin-top: 0.5rem;
+            text-decoration: none;
+        }
+
+        .btn-outline:hover {
+            background: #3b6ba5;
+            color: #fff;
+        }
+
+        /* 脚注 */
+        .footer-note {
+            text-align: center;
+            padding: 2rem 0 1.5rem;
+            color: #6a7c94;
+            font-size: 0.85rem;
+            border-top: 1px solid #dae2ed;
+            margin-top: 1rem;
+        }
+
+        /* 响应式微调 */
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 1.9rem; }
+            .hero p { font-size: 1rem; }
+            .card-grid { gap: 1.2rem; margin-top: -1.5rem; }
+            .link-section { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 深色头图 -->
+    <section class="hero">
+        <h1>老哥网 · 简明指南</h1>
+        <p>信息密度优先，剔除冗余，直达有价值的索引与提醒。适合日常查阅与快速定位。</p>
+        <span class="badge">信息卡片 · 访问提醒</span>
+    </section>
+
+    <div class="container">
+
+        <!-- 卡片网格：用途 / 场景 / 人群 -->
+        <div class="card-grid">
+            <div class="card">
+                <span class="icon">📋</span>
+                <h3>核心用途</h3>
+                <ul>
+                    <li>聚合索引与常见路径</li>
+                    <li>话题归类、导航简表</li>
+                    <li>关键术语速查</li>
+                    <li>社区动态与提醒</li>
+                </ul>
+                <p style="margin-top:0.8rem; font-size:0.9rem;">面向信息查找场景，降低重复搜索成本。</p>
+            </div>
+            <div class="card">
+                <span class="icon">🧭</span>
+                <h3>适合人群</h3>
+                <ul>
+                    <li>习惯自主检索的浏览者</li>
+                    <li>希望快速定位分类的用户</li>
+                    <li>关注实用提醒与更新的人</li>
+                    <li>对信息结构化有需求</li>
+                </ul>
+                <p style="margin-top:0.8rem; font-size:0.9rem;">不论新手或老用户，均可按需取用。</p>
+            </div>
+            <div class="card">
+                <span class="icon">⚙️</span>
+                <h3>使用场景</h3>
+                <ul>
+                    <li>日常快速查阅分类</li>
+                    <li>对比不同索引入口</li>
+                    <li>查看最新提示或调整</li>
+                    <li>作为参考辅助页面</li>
+                </ul>
+                <p style="margin-top:0.8rem; font-size:0.9rem;">建议结合自身需求筛选，不必全部浏览。</p>
+            </div>
+        </div>
+
+        <!-- 自然链接段落 + 访问提醒  -->
+        <div class="link-section">
+            <h2>📌 访问方式与提醒</h2>
+            <p>
+                若你需要获取持续更新的索引或分类入口，可将 <a href="https://cns-laoge.com">老哥网</a> 加入浏览器书签。页面结构偏向简明目录风格，适合在需要时直接打开，不必每次都重新搜索。建议定期查看是否有新分类或调整提示。
+            </p>
+            <p>
+                部分内容可能随社区维护而微调，留意导航区或置顶说明即可。网站本身不存储违规或承诺性信息，请根据实际内容自行判别。下方摘要可快速了解常见关注点。
+            </p>
+
+            <!-- FAQ 摘要卡片化 -->
+            <div class="faq-highlight">
+                <p><strong>▸ 访问异常？</strong> 检查网络连接或尝试更新浏览器。部分区域可能受网络环境影响，可稍后重试。</p>
+                <p><strong>▸ 信息时效？</strong> 索引类页面会不定期刷新，关键变动通常会通过站内提示告知。</p>
+                <p><strong>▸ 建议与反馈？</strong> 可通过站内联系方式或相关社区渠道沟通，但本页不提供直接表单。</p>
+                <p style="margin-top:0.8rem; opacity:0.8;">⚠️ 请保持合理预期，网站仅提供信息索引与导航，不构成任何形式指引或担保。</p>
+            </div>
+            <a href="https://cns-laoge.com" class="btn-outline">老哥网</a>
+        </div>
+
+        <!-- 简介式收尾 -->
+        <div style="background: #fafcff; border-radius: 16px; padding: 1.5rem 2rem; margin: 1rem 0 1.5rem; border: 1px solid #e7edf6;">
+            <p style="font-size:0.95rem; margin-bottom:0.5rem;">
+                <span style="font-weight:600; color:#0b2a4a;">页面定位：</span> 以信息卡片与段落提示为主，不包含复杂交互或动态脚本。适合移动端与桌面端快速加载。
+            </p>
+            <p style="font-size:0.9rem; color:#3d5775;">
+                本页仅为介绍索引，具体内容以 <a href="https://cns-laoge.com" style="color:#1d5b9e; text-decoration:underline;">老哥网</a> 实际页面为准。建议保持浏览器及安全设置更新。
+            </p>
+        </div>
+
+        <div class="footer-note">
+            <span>内容索引 · 访问提醒 · 保持简明</span><br>
+            <span style="opacity:0.6;">老哥网 · 介绍卡片</span>
+        </div>
+
+    </div>
+
+</body>
+</html>
